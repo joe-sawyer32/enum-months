@@ -1,4 +1,4 @@
-package com.theironyard;
+package com.example;
 
 public class Main {
 
