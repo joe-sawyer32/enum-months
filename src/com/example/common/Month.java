@@ -17,12 +17,16 @@ public enum Month {
     NOVEMBER("November"),
     DECEMBER("December");
 
-    private final String englishName;
+    // FIELDS
+    private String englishName;
 
+    // CONSTRUCTORS
     Month(String englishName) {
         this.englishName = englishName;
     }
 
+    // METHODS
+    // getters
     public String getEnglishName() {
         return englishName;
     }
