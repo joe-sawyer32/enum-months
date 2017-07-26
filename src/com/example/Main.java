@@ -1,7 +1,11 @@
 package com.example;
 
 import com.example.common.Month;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,11 +34,21 @@ public class Main {
         System.out.println("Here's a look at the rest of the year:");
         System.out.println(userMonthAndBeyond);
 
+        // EXTRA
+        writeMonthToJson(userMonth);
     }
 
-    private static void outputOptions() {
-        for (Month m : Month.values()) {
-            System.out.println(m);
+    private static void writeMonthToJson(Month month) {
+        ObjectMapper mapper = new ObjectMapper();
+        try (FileWriter fileWriter = new FileWriter("month.json")){
+            String json = mapper.writeValueAsString(month);
+            fileWriter.write(json);
+        } catch (JsonProcessingException ex) {
+            System.out.println("Error in JSON Processing");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            System.out.println("Error in file writing");
+            ex.printStackTrace();
         }
     }
 
@@ -55,5 +69,11 @@ public class Main {
                 break;
         }
         return list;
+    }
+
+    private static void outputOptions() {
+        for (Month m : Month.values()) {
+            System.out.println(m);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.common;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * Created by Joe on 7/25/17.
  */
@@ -27,6 +29,7 @@ public enum Month {
 
     // METHODS
     // getters
+    @JsonValue
     public String getEnglishName() {
         return englishName;
     }
